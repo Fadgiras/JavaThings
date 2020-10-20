@@ -1,6 +1,4 @@
-package Factory;
-
-import Factory.Client;
+package DesignPatterns.Factory;
 
 public class Commande {
     private final Client cl;

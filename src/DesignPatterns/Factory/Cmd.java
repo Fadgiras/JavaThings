@@ -1,4 +1,4 @@
-package Factory;
+package DesignPatterns.Factory;
 //Cli depend de Cmd
 public class Cmd {
     private final Cli cl;
