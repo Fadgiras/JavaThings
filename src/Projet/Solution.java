@@ -14,8 +14,11 @@ class Solution {
     {
         if (m == 1 || n == 1)
             return 1;
-
         return numberOfPaths(m - 1, n) + numberOfPaths(m, n - 1);
+    }
+
+    static String wallKey(int x, int y){
+        return x + "," + y;
     }
 
     public static void main(String args[]) {
@@ -25,8 +28,13 @@ class Solution {
         if (in.hasNextLine()) {
             in.nextLine();
         }
-        for (int i = 0; i < M; i++) {
+
+        HashMap Walls = new HashMap<>();
+        for (int y = 0; y < M; y++) {
             String ROW = in.nextLine();
+            for (int x = 0; x < N; x++) {
+                Walls.put(wallKey(x, y), ROW.charAt(x) == '1');
+            }
         }
 
         System.out.println(numberOfPaths(M, N));
