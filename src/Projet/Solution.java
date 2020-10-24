@@ -7,7 +7,7 @@ import java.math.*;
 class Solution{
 
     static String wallKey(final int x, final int y){
-        return x + "," + y;
+                return x + "," + y;
     }
 
     static Boolean isThereWall(final int x, final String Row){
@@ -33,50 +33,35 @@ class Solution{
                 Walls.put(wallKey(x, y), isThereWall(x, ROW));
             }
         }
-        /*
-        //TODO : Eliminating paths
-        for (int y = 0; y < M; y++) {
-            String ROW = in.nextLine();
-            for (int x = 0; x < N; x++) {
-                if(isWall(x, y, Walls)){
-
-                }
-            }
-        }
-        */
-        in.close();
         pathFinder toPF = new pathFinder(M, N, Walls);
-        System.out.println(toPF.numberOfPaths(M, N, Walls));
+        System.out.println(toPF.numberOfPaths(0, 0, Walls));
     }
 }
 
 //to avoid the "Static error"
 class pathFinder{
-
     private final HashMap<String, Boolean> map;
     private final int m, n;
-    public pathFinder(final int m, final int n, final HashMap<String, Boolean> map) {
+	public pathFinder(final int m, final int n, final HashMap<String, Boolean> map) {
         this.map = map;
         this.m = m;
-        this.n = m;
+        this.n = n;
     }
-    public int numberOfPaths(final int m, final int n, final HashMap<String, Boolean> map)
+    public int numberOfPaths(final int X, final int Y, final HashMap<String, Boolean> map)
     {
-        final int x = 0;
-        final int y = 0;
         //If start or end is wall then 0 paths
         if(Solution.isWall(0, 0, map) || Solution.isWall(m-1, n-1, map))
             return 0;
-        //If map explored stop
-        if(Solution.wallKey(x,y)==Solution.wallKey(m, n))
+        //If out of map
+        if (X == m || Y == n)
             return 0;
-        //if current cell is wall one path minus
-        if(Solution.isWall(x, y, map))
+        //If current cell is wall one path minus
+        if(Solution.isWall(X, Y, map)){
             return 0;
-        // base algorithm
-        if (m == 1 || n == 1)
-            return 1;
-        //return numberOfPaths(m - 1, n) + numberOfPaths(m, n - 1);
-        return numberOfPaths(x + 1, y, map) + numberOfPaths(x, y + 1, map);
+        }
+        //If this point is reached, valid path
+        if (m-1==X && n-1==Y)
+            return 1;  
+        return numberOfPaths(X + 1, Y, map) + numberOfPaths(X, Y + 1, map);
     }
 }
