@@ -55,7 +55,7 @@ class pathFinder{
         //If out of map
         if (X == m || Y == n)
             return 0;
-        //If current cell is wall one path minus
+        //If current cell is wall one path minus 
         if(Solution.isWall(X, Y, map)){
             return 0;
         }
