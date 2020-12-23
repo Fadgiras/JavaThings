@@ -1,2 +1,4 @@
-package DesignPatterns.Decorator;public class UnderlineMessage {
+package DesignPatterns.Decorator;
+
+public class UnderlineMessage {
 }

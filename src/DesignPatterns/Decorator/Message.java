@@ -1,2 +1,7 @@
-package DesignPatterns.Decorator;public class Message {
+package DesignPatterns.Decorator;
+
+public abstract class Message extends Decorator{
+        public Message(Message message){
+
+        }
 }
