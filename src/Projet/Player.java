@@ -67,41 +67,33 @@ class Position{
         grid[X][Y] = Character.forDigit(player,10);
     }
 
-    //TODO
     String direction(char[][] Grid, int X, int Y){
-        boolean running=true;
+
         if(X!=0){
             if(Grid[X-1][Y]=='_'){
-                //running=false;
                 Dir="LEFT";
                 return "LEFT";
             }
         }
         if(Y !=0){
             if(Grid[X][Y-1]=='_'){
-                //running=false;
                 Dir="UP";
                 return "UP";
             }
         }
-        if(Y!=19){
-            if(Grid[X][Y+1]=='_'){
-                //running=false;
-                Dir="DOWN";
-                return "DOWN";
-            }
-        }
         //System.err.println(X+":"+Y);
         if(X!=29){
-            //System.err.println("1");
             if(Grid[X+1][Y]=='_'){
-                //running=false;
-                //System.err.println("2");
                 Dir="RIGHT";
                 return "RIGHT";
             }
         }
-
+        if(Y!=19){
+            if(Grid[X][Y+1]=='_'){
+                Dir="DOWN";
+                return "DOWN";
+            }
+        }
         //default
         System.err.println("Dir");
         return Dir;
